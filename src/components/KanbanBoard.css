@@ -1,0 +1,75 @@
+html, body {
+    height: 100%;          /* Ensure html and body take full height of the viewport */
+    margin: 0;            /* Remove any default margin */
+}
+
+.kanban-board {
+    background-color: rgb(244, 246, 250); /* Your desired background color */
+    padding: 0;          /* Remove any default padding */
+    margin: 0;           /* Remove any default margin */
+    width: 100%;         /* Ensure it takes full width */
+    min-height: 100vh;   /* Set minimum height to 100% of the viewport height */
+    display: flex;       /* Optional: If you want to align child elements */
+    flex-direction: column; /* Optional: Arrange children in a column */
+}
+
+.user-container {
+    display: flex;
+    flex-direction: row; /* Horizontal layout for user columns */
+    flex-wrap: nowrap; /* Prevent wrapping of columns */
+    justify-content: space-between; /* Distribute space between columns */
+    width: 100%; /* Take full width */
+}
+.user-column {
+    margin: 10px; /* Margin around each column */
+    flex: 1; /* Allow columns to grow equally */
+    border-radius: 8px; /* Rounded corners for aesthetics */
+}
+
+.user-header {
+    font-size: 1.5em; /* Larger font for user headers */
+    font-weight: bold; /* Bold font for emphasis */
+    text-align: left; /* Center align the text */
+    padding: 10px; /* Add padding for spacing */
+}
+  .controls {
+    align-items: center;            /* Center items vertically */
+    background-color: #f8f9fa;     /* Background color similar to navbar */
+    padding: 10px 20px;            /* Add padding for spacing */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 20px;           /* Space below the navbar */
+    width: 100%;                   /* Set width to 100% to fill the entire container */
+    position: relative;            /* Make sure it doesn't interfere with other elements */
+    left: 0;                       /* Align to the left edge of the window */
+    right: 0;                      /* Align to the right edge of the window */
+    border-radius: 0;              /* Remove rounded corners */
+}
+
+.controls div {
+    flex-grow: 1;                  /* Allow the grouping and ordering options to take space */
+}
+
+.controls label {
+    margin-right: 15px;            /* Space between label and controls */
+}
+
+.controls select {
+    margin-left: 5px;              /* Space between the label and the dropdown */
+}
+
+  
+  .ticket-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ticket-card {
+    margin: 5px 0; /* Space between cards */
+  }
+
+  .ticket-container {
+    display: flex;              /* Align cards horizontally */
+    flex-direction: column;     /* Stack cards vertically */
+    flex-wrap: wrap;           /* Allow cards to wrap onto the next line */
+    gap: 0;                 /* Space between cards */
+}
