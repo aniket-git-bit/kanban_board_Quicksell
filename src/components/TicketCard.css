@@ -1,9 +1,9 @@
 .ticket-card {
-    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 15px;
     margin: 10px;
     position: relative;
+    background-color: white;
   }
   
   .ticket-header {

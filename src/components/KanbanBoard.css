@@ -1,10 +1,11 @@
 html, body {
     height: 100%;          /* Ensure html and body take full height of the viewport */
     margin: 0;            /* Remove any default margin */
+    font-size: smaller;
 }
 
 .kanban-board {
-    background-color: rgb(244, 246, 250); /* Your desired background color */
+    background-color: rgb(238, 243, 253); /* Your desired background color */
     padding: 0;          /* Remove any default padding */
     margin: 0;           /* Remove any default margin */
     width: 100%;         /* Ensure it takes full width */
@@ -27,11 +28,21 @@ html, body {
 }
 
 .user-header {
-    font-size: 1.5em; /* Larger font for user headers */
-    font-weight: bold; /* Bold font for emphasis */
-    text-align: left; /* Center align the text */
-    padding: 10px; /* Add padding for spacing */
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Center items vertically */
+    font-weight: bold; /* Make the text bold */
+    font-size: 1.2em; /* Slightly larger font size */
+    color: #333; /* Dark gray color for text */
+    margin: 10px 0; /* Vertical spacing */
+    margin-left: 20px;
 }
+
+.user-header .count {
+    font-size: 0.9em; /* Smaller font size for the count */
+    color: #777; /* Light gray color for count */
+    margin-left: 15px; /* Add gap between name and count */
+}
+
   .controls {
     align-items: center;            /* Center items vertically */
     background-color: #f8f9fa;     /* Background color similar to navbar */

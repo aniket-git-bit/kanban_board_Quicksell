@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './KanbanBoard.css';
 import TicketCard from './TicketCard'; // Import the TicketCard component
+import Icons from './Icons'; // Import the Icons
 
 const KanbanBoard = () => {
   const [tickets, setTickets] = useState([]);
@@ -10,6 +11,8 @@ const KanbanBoard = () => {
   const [groupBy, setGroupBy] = useState('user'); // Default grouping by user
   const [sortBy, setSortBy] = useState('priority'); // Default sorting by priority
   const [displayOptions, setDisplayOptions] = useState(false);
+  const [selectedTitle, setSelectedTitle] = useState(null); // State for selected ticket title
+  const [selectedUser, setSelectedUser] = useState(null); // State for selected user
 
   // Fetch tickets and users from the provided API
   const fetchData = async () => {
@@ -46,11 +49,20 @@ const KanbanBoard = () => {
     setSortBy(event.target.value);
   };
 
+  // Map priority levels to labels and icons
+  const priorityLabels = {
+    4: { label: 'Urgent', icon: <Icons.UrgentPriorityColorIcon /> },
+    3: { label: 'High', icon: <Icons.UrgentPriorityGreyIcon /> },
+    2: { label: 'Medium', icon: <Icons.HighPriorityIcon /> },
+    1: { label: 'Low', icon: <Icons.MediumPriorityIcon /> },
+    0: { label: 'No Priority', icon: <Icons.NoPriorityIcon /> },
+  };
+
   // Group tickets based on selected criteria
   const groupTickets = (tickets) => {
     const grouped = {};
     tickets.forEach((ticket) => {
-      const key = groupBy === 'user' ? usersMap[ticket.userId] : ticket.status; // Group by user name or status
+      const key = groupBy === 'status' ? ticket.status : usersMap[ticket.userId]; // Group by status or user name
       if (!grouped[key]) {
         grouped[key] = [];
       }
@@ -63,13 +75,29 @@ const KanbanBoard = () => {
   const sortTickets = (tickets) => {
     return tickets.sort((a, b) => {
       if (sortBy === 'priority') {
-        return b.priority - a.priority; // Descending order
+        return b.priority - a.priority; // Descending order by priority
       }
-      return a.title.localeCompare(b.title); // Ascending order
+      return a.title.localeCompare(b.title); // Ascending order by title
     });
   };
 
   const groupedTickets = groupTickets(tickets);
+
+  // Prepare for displaying tickets in priority groups when ordering by priority
+  const priorityGroups = {};
+  tickets.forEach((ticket) => {
+    const priorityKey = priorityLabels[ticket.priority]; // Get both icon and label for the priority
+    const priorityGroupKey = ticket.priority; // Store the numeric priority for correct grouping
+
+    if (!priorityGroups[priorityGroupKey]) {
+      priorityGroups[priorityGroupKey] = {
+        label: priorityKey.label,
+        icon: priorityKey.icon,
+        tickets: []
+      };
+    }
+    priorityGroups[priorityGroupKey].tickets.push(ticket);
+  });
 
   return (
     <div className="kanban-board">
@@ -80,7 +108,7 @@ const KanbanBoard = () => {
         <>
           <div className="controls">
             <button onClick={() => setDisplayOptions(prev => !prev)}>
-              Display
+              <Icons.DisplayIcon /> Display
             </button>
             {displayOptions && (
               <div className="options-container">
@@ -107,19 +135,52 @@ const KanbanBoard = () => {
           </div>
 
           <div className="user-container">
-            {Object.entries(groupedTickets).length === 0 ? (
-              <p>No tickets available.</p>
-            ) : (
-              Object.entries(groupedTickets).map(([key, group]) => (
+            {sortBy === 'priority' ? (
+              Object.entries(priorityGroups).map(([key, group]) => (
                 <div className="user-column" key={key}>
-                  <div className="user-header">{key}</div>
+                  <div className="user-header">
+                    {/* Render both the icon and label */}
+                    {group.icon}
+                    <span>{group.label}</span>
+                    <span className="count">{group.tickets.length}</span>
+                  </div>
                   <div className="ticket-container">
-                    {sortTickets(group).map((ticket) => (
-                      <TicketCard key={ticket.id} ticket={{ ...ticket, userId: usersMap[ticket.userId] }} />
+                    {sortTickets(group.tickets).map((ticket) => (
+                      <TicketCard 
+                        key={ticket.id} 
+                        ticket={{ ...ticket, userId: usersMap[ticket.userId] }} 
+                        showUserPhoto={groupBy !== 'user'} 
+                        onTitleSelect={setSelectedTitle} 
+                        onUserSelect={setSelectedUser} 
+                      />
                     ))}
                   </div>
                 </div>
               ))
+            ) : (
+              Object.entries(groupedTickets).length === 0 ? (
+                <p>No tickets available.</p>
+              ) : (
+                Object.entries(groupedTickets).map(([key, group]) => (
+                  <div className="user-column" key={key}>
+                    <div className="user-header">
+                      <span>{key}</span>
+                      <span className="count">{group.length}</span>
+                    </div>
+                    <div className="ticket-container">
+                      {sortTickets(group).map((ticket) => (
+                        <TicketCard 
+                          key={ticket.id} 
+                          ticket={{ ...ticket, userId: usersMap[ticket.userId] }} 
+                          showUserPhoto={groupBy !== 'user'} 
+                          onTitleSelect={setSelectedTitle} 
+                          onUserSelect={setSelectedUser} 
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))
+              )
             )}
           </div>
         </>
