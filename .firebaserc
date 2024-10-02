@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "kanban-board-quicksell",
+    "prod": "kanban-board-quicksell"
+  },
+  "targets": {},
+  "etags": {}
+}

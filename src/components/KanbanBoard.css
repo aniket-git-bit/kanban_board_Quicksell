@@ -1,86 +1,119 @@
 html, body {
-    height: 100%;          /* Ensure html and body take full height of the viewport */
-    margin: 0;            /* Remove any default margin */
+    height: 100%;         
+    margin: 0;          
     font-size: smaller;
 }
 
 .kanban-board {
-    background-color: rgb(238, 243, 253); /* Your desired background color */
-    padding: 0;          /* Remove any default padding */
-    margin: 0;           /* Remove any default margin */
-    width: 100%;         /* Ensure it takes full width */
-    min-height: 100vh;   /* Set minimum height to 100% of the viewport height */
-    display: flex;       /* Optional: If you want to align child elements */
-    flex-direction: column; /* Optional: Arrange children in a column */
+    background-color: rgb(238, 243, 253); 
+    padding: 0;          
+    margin: 0;           
+    width: 100%;       
+    min-height: 100vh; 
+    display: flex;    
+    flex-direction: column;
 }
 
 .user-container {
     display: flex;
-    flex-direction: row; /* Horizontal layout for user columns */
-    flex-wrap: nowrap; /* Prevent wrapping of columns */
-    justify-content: space-between; /* Distribute space between columns */
-    width: 100%; /* Take full width */
+    flex-direction: row;
+    flex-wrap: nowrap; 
+    justify-content: space-between;
+    width: 100%;
 }
 .user-column {
-    margin: 10px; /* Margin around each column */
-    flex: 1; /* Allow columns to grow equally */
-    border-radius: 8px; /* Rounded corners for aesthetics */
+    margin: 10px; 
+    flex: 1; 
+    border-radius: 8px; 
 }
 
 .user-header {
-    display: flex; /* Use flexbox for horizontal alignment */
-    align-items: center; /* Center items vertically */
-    font-weight: bold; /* Make the text bold */
-    font-size: 1.2em; /* Slightly larger font size */
-    color: #333; /* Dark gray color for text */
-    margin: 10px 0; /* Vertical spacing */
+    display: flex; 
+    align-items: center; 
+    font-weight: bold; 
+    font-size: 1.2em; 
+    color: #333; 
+    margin: 10px 0; 
     margin-left: 20px;
 }
 
 .user-header .count {
-    font-size: 0.9em; /* Smaller font size for the count */
-    color: #777; /* Light gray color for count */
-    margin-left: 15px; /* Add gap between name and count */
+    font-size: 0.9em; 
+    color: #777; 
+    margin-left: 15px; 
 }
 
   .controls {
-    align-items: center;            /* Center items vertically */
-    background-color: #f8f9fa;     /* Background color similar to navbar */
-    padding: 10px 20px;            /* Add padding for spacing */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    margin-bottom: 20px;           /* Space below the navbar */
-    width: 100%;                   /* Set width to 100% to fill the entire container */
-    position: relative;            /* Make sure it doesn't interfere with other elements */
-    left: 0;                       /* Align to the left edge of the window */
-    right: 0;                      /* Align to the right edge of the window */
-    border-radius: 0;              /* Remove rounded corners */
+    align-items: center;          
+    background-color: #f8f9fa;   
+    padding: 20px;          
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;         
+    width: 100%;                  
+    position: relative;          
+    left: 0;                      
+    right: 0;                    
+    border-radius: 0;       
+    margin: 20px;
 }
 
 .controls div {
-    flex-grow: 1;                  /* Allow the grouping and ordering options to take space */
+    flex-grow: 10;              
 }
 
 .controls label {
-    margin-right: 15px;            /* Space between label and controls */
+    margin-right: 45px;         
+
 }
 
 .controls select {
-    margin-left: 5px;              /* Space between the label and the dropdown */
+    margin-left: 5px;           
 }
 
-  
+  .options-container {
+    margin: 10px;
+    
+  }
+  .grouping-options {
+    margin-bottom: 10px; 
+  }
   .ticket-container {
     display: flex;
     flex-direction: column;
   }
   
   .ticket-card {
-    margin: 5px 0; /* Space between cards */
+    margin: 5px 0;
   }
 
   .ticket-container {
-    display: flex;              /* Align cards horizontally */
-    flex-direction: column;     /* Stack cards vertically */
-    flex-wrap: wrap;           /* Allow cards to wrap onto the next line */
-    gap: 0;                 /* Space between cards */
+    display: flex;        
+    flex-direction: column;  
+    flex-wrap: wrap;   
+    gap: 0;         
 }
+
+
+.user-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+.user-header button {
+    color: white; 
+    border: none;
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-left: auto;
+  }
+  
+  .user-header button:hover {
+    background-color: #ffffff; 
+  }
+
+  label {
+    margin-bottom: 5px;
+    display: block;
+  }
+  

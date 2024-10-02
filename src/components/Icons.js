@@ -79,7 +79,7 @@ export const ToDoIcon = () => <svg width="14" height="14" viewBox="0 0 14 14" fi
 <path d="M7 13C10.3137 13 13 10.3137 13 7C13 3.68629 10.3137 1 7 1C3.68629 1 1 3.68629 1 7C1 10.3137 3.68629 13 7 13Z" stroke="#B8B8B8" stroke-width="2"/>
 </svg>
 ;
-
+export const FeatureRequest = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"><path d="M176 432c0 44.1-35.9 80-80 80s-80-35.9-80-80 35.9-80 80-80 80 35.9 80 80zM25.3 25.2l13.6 272C39.5 310 50 320 62.8 320h66.3c12.8 0 23.3-10 24-22.8l13.6-272C167.4 11.5 156.5 0 142.8 0H49.2C35.5 0 24.6 11.5 25.3 25.2z"/></svg>;
 // Optionally, create an object to reference the icons
 const Icons = {
     NoPriorityIcon,
@@ -97,6 +97,7 @@ const Icons = {
     UrgentPriorityColorIcon,
     UrgentPriorityGreyIcon,
     ToDoIcon,
+    FeatureRequest,
 };
 
 export default Icons;

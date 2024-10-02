@@ -25,13 +25,13 @@
   
   .ticket-title-wrapper {
     display: flex;
-    align-items: center; /* Align checkbox and title on the same line */
+    align-items: center;
     margin: 10px 0;
   }
   
   .ticket-checkbox {
     margin-right: 10px;
-    transform: scale(1.2); /* Make the checkbox slightly larger */
+    transform: scale(1.2);
   }
   
   .ticket-title {
@@ -39,7 +39,7 @@
   }
   
   .ticket-title.done {
-    color: gray; /* Optional: Change the color of the title when done */
+    color: gray;
   }
   
   .ticket-tag {
@@ -61,9 +61,9 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    bottom: 0; /* Align at the bottom */
-    right: 0; /* Align to the right */
-    border: 2px solid white; /* White border to create separation */
+    bottom: 0;
+    right: 0;
+    border: 2px solid white;
   }
   
   .available {
@@ -74,3 +74,38 @@
     background-color: grey;
   }
   
+
+  .ticket-header {
+    position: relative;
+  }
+  
+  .user-photo {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%;
+  }
+  
+  .status-circle {
+    position: absolute; 
+    bottom: 0;
+    right: 0; 
+    width: 10px; 
+    height: 10px;
+    border-radius: 50%;
+  }
+  
+  .available {
+    background-color: green;
+  }
+  
+  .not-available {
+    background-color: red;
+  }
+  
+  .icon-background {
+  background-color: rgb(215, 215, 215);
+  border-radius: 5px;
+  padding: 5px; 
+  display: inline-block;
+  padding-top: 2px;
+}
